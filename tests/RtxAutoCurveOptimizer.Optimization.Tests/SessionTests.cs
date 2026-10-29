@@ -179,7 +179,8 @@ public sealed class SessionTests : IDisposable
             + " | " + string.Join("; ", resumed.Tests.Where(t => t.AnchorIndex >= 2).Select(t => $"a{t.AnchorIndex} {t.Kind} {t.FrequencyKhz / 1000} {t.Outcome}")));
         Assert.Equal(crash.Anchors[0], resumed.Anchors[0]);
         Assert.Equal(crash.Anchors[1], resumed.Anchors[1]);
-        Assert.Equal(crash.Tests.Count(t => t.AnchorIndex is 0 or 1), resumed.Tests.Count(t => t.AnchorIndex is 0 or 1));
+        // The final validation carries its cap's anchor index; only the anchor search tests must be reused as they are.
+        Assert.Equal(crash.Tests.Count(t => t.AnchorIndex is 0 or 1), resumed.Tests.Count(t => t.AnchorIndex is 0 or 1 && t.Kind != TestKind.Validation));
         Assert.Equal(1, resumed.Tests.Count(t => t.Kind == TestKind.ReferenceStock));
         Assert.Contains(events.Of<Warning>(), w => w.Kind == WarningKind.ResumedFromSession);
         Assert.DoesNotContain(resumed.Tests, t => t.Kind == TestKind.Search && t.AnchorIndex == 2
