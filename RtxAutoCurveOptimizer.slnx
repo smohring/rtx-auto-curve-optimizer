@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RtxAutoCurveOptimizer.Afterburner/RtxAutoCurveOptimizer.Afterburner.csproj" />
+    <Project Path="src/RtxAutoCurveOptimizer.App/RtxAutoCurveOptimizer.App.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/RtxAutoCurveOptimizer.Cli/RtxAutoCurveOptimizer.Cli.csproj" />
+    <Project Path="src/RtxAutoCurveOptimizer.Core/RtxAutoCurveOptimizer.Core.csproj" />
+    <Project Path="src/RtxAutoCurveOptimizer.Hardware/RtxAutoCurveOptimizer.Hardware.csproj" />
+    <Project Path="src/RtxAutoCurveOptimizer.Optimization/RtxAutoCurveOptimizer.Optimization.csproj" />
+    <Project Path="src/RtxAutoCurveOptimizer.Stress/RtxAutoCurveOptimizer.Stress.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RtxAutoCurveOptimizer.Afterburner.Tests/RtxAutoCurveOptimizer.Afterburner.Tests.csproj" />
+    <Project Path="tests/RtxAutoCurveOptimizer.Hardware.Tests/RtxAutoCurveOptimizer.Hardware.Tests.csproj" />
+    <Project Path="tests/RtxAutoCurveOptimizer.Optimization.Tests/RtxAutoCurveOptimizer.Optimization.Tests.csproj" />
+    <Project Path="tests/RtxAutoCurveOptimizer.Stress.Tests/RtxAutoCurveOptimizer.Stress.Tests.csproj" />
+  </Folder>
+</Solution>

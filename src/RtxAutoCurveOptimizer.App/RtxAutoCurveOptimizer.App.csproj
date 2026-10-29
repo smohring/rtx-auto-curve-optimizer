@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- Own Main in Program.cs: watchdog and worker modes must start without WinUI. -->
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <RootNamespace>RtxAutoCurveOptimizer.App</RootNamespace>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <SelfContained>true</SelfContained>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <!-- Development switch: -p:DevAsInvoker=true builds an unelevated (asInvoker) variant into bin\dev\ with its own obj\dev\. -->
+  <PropertyGroup Condition="'$(DevAsInvoker)' == 'true'">
+    <ApplicationManifest>app.dev.manifest</ApplicationManifest>
+    <OutputPath>bin\dev\</OutputPath>
+    <IntermediateOutputPath>obj\dev\</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RtxAutoCurveOptimizer.Core\RtxAutoCurveOptimizer.Core.csproj" />
+    <ProjectReference Include="..\RtxAutoCurveOptimizer.Hardware\RtxAutoCurveOptimizer.Hardware.csproj" />
+    <ProjectReference Include="..\RtxAutoCurveOptimizer.Stress\RtxAutoCurveOptimizer.Stress.csproj" />
+    <ProjectReference Include="..\RtxAutoCurveOptimizer.Optimization\RtxAutoCurveOptimizer.Optimization.csproj" />
+    <ProjectReference Include="..\RtxAutoCurveOptimizer.Afterburner\RtxAutoCurveOptimizer.Afterburner.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2705" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**\*.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\AppIcon.ico" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

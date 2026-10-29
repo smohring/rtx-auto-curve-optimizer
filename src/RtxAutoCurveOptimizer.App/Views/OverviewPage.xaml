@@ -1,0 +1,104 @@
+<Page
+    x:Class="RtxAutoCurveOptimizer.App.Views.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:RtxAutoCurveOptimizer.App.Controls"
+    xmlns:vm="using:RtxAutoCurveOptimizer.App.ViewModels"
+    NavigationCacheMode="Required">
+
+    <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Auto">
+        <Grid
+            x:Name="Root"
+            Padding="{StaticResource PagePadding}"
+            RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock x:Uid="OverviewTitle" Style="{StaticResource PageTitleStyle}" />
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="{x:Bind ViewModel.GpuName, Mode=OneWay}" />
+                    <TextBlock
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource SecondaryTextStyle}"
+                        Text="{x:Bind ViewModel.DriverText, Mode=OneWay}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Spacing="8">
+                <InfoBar
+                    x:Uid="OverviewErrorBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.HasError, Mode=OneWay}"
+                    Message="{x:Bind ViewModel.ErrorText, Mode=OneWay}"
+                    Severity="Error" />
+                <InfoBar
+                    x:Uid="OverviewAfterburnerBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.AfterburnerRunning, Mode=OneWay}"
+                    Severity="Warning" />
+                <InfoBar
+                    x:Uid="OverviewReadOnlyBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.IsReadOnly, Mode=OneWay}"
+                    Severity="Warning" />
+                <InfoBar
+                    x:Uid="OverviewDemoBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.IsDemo, Mode=OneWay}"
+                    Severity="Informational" />
+            </StackPanel>
+
+            <ItemsRepeater Grid.Row="2" ItemsSource="{x:Bind ViewModel.Tiles.All}">
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout
+                        ItemsStretch="Fill"
+                        MinColumnSpacing="12"
+                        MinItemWidth="150"
+                        MinRowSpacing="12" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="vm:TileViewModel">
+                        <Border
+                            MinHeight="92"
+                            Padding="16,12"
+                            Style="{StaticResource CardBorderStyle}"
+                            ToolTipService.ToolTip="{x:Bind ToolTip, Mode=OneWay}">
+                            <StackPanel Spacing="2">
+                                <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind Label}" />
+                                <Viewbox HorizontalAlignment="Left" StretchDirection="DownOnly">
+                                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{x:Bind Value, Mode=OneWay}" />
+                                </Viewbox>
+                                <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind Detail, Mode=OneWay}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+
+            <Border
+                Grid.Row="3"
+                MinHeight="320"
+                Style="{StaticResource CardBorderStyle}">
+                <Grid RowSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Uid="OverviewChartTitle" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <controls:CurveChart
+                        Grid.Row="1"
+                        Series="{x:Bind ViewModel.Series, Mode=OneWay}"
+                        XMax="{x:Bind ViewModel.ChartXMax, Mode=OneWay}"
+                        XMin="{x:Bind ViewModel.ChartXMin, Mode=OneWay}" />
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

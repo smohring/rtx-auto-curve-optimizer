@@ -1,0 +1,42 @@
+<ContentDialog
+    x:Class="RtxAutoCurveOptimizer.App.Views.SaveProfileDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="SaveProfileDialog"
+    DefaultButton="Primary">
+
+    <StackPanel Width="420" Spacing="12">
+        <TextBlock x:Uid="SaveProfileIntro" TextWrapping="Wrap" />
+
+        <InfoBar
+            x:Name="RunningBar"
+            x:Uid="SaveProfileRunningBar"
+            IsClosable="False"
+            IsOpen="False"
+            Severity="Error">
+            <InfoBar.ActionButton>
+                <Button x:Uid="SaveProfileCheckAgain" Click="CheckAgain_Click" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+
+        <InfoBar
+            x:Name="MissingBar"
+            x:Uid="SaveProfileMissingBar"
+            IsClosable="False"
+            IsOpen="False"
+            Severity="Error" />
+
+        <ComboBox
+            x:Name="SlotBox"
+            x:Uid="SaveProfileSlot"
+            HorizontalAlignment="Stretch"
+            DisplayMemberPath="Text" />
+
+        <TextBlock
+            x:Name="PathText"
+            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+            IsTextSelectionEnabled="True"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            TextWrapping="Wrap" />
+    </StackPanel>
+</ContentDialog>

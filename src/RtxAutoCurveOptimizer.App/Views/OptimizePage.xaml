@@ -1,0 +1,263 @@
+<Page
+    x:Class="RtxAutoCurveOptimizer.App.Views.OptimizePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:RtxAutoCurveOptimizer.App.Controls"
+    xmlns:vm="using:RtxAutoCurveOptimizer.App.ViewModels"
+    NavigationCacheMode="Required">
+
+    <Grid Padding="{StaticResource PagePadding}" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Uid="OptimizeTitle" Style="{StaticResource PageTitleStyle}" />
+
+        <Grid Grid.Row="1" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="340" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Settings column -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="12">
+                    <Border Style="{StaticResource CardBorderStyle}">
+                        <StackPanel Spacing="16">
+                            <StackPanel Spacing="8">
+                                <TextBlock x:Uid="OptimizePresetHeader" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                <RadioButtons
+                                    IsEnabled="{x:Bind ViewModel.CanEdit, Mode=OneWay}"
+                                    ItemsSource="{x:Bind ViewModel.Presets}"
+                                    SelectedIndex="{x:Bind ViewModel.SelectedPresetIndex, Mode=TwoWay}">
+                                    <RadioButtons.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:PresetOption">
+                                            <StackPanel Spacing="0">
+                                                <TextBlock Text="{x:Bind Title}" />
+                                                <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind Detail}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </RadioButtons.ItemTemplate>
+                                </RadioButtons>
+                            </StackPanel>
+
+                            <NumberBox
+                                x:Uid="OptimizeSafetyMargin"
+                                IsEnabled="{x:Bind ViewModel.CanEdit, Mode=OneWay}"
+                                Maximum="200"
+                                Minimum="0"
+                                SmallChange="5"
+                                SpinButtonPlacementMode="Compact"
+                                Value="{x:Bind ViewModel.SafetyMarginMhz, Mode=TwoWay}" />
+
+                            <StackPanel Spacing="8">
+                                <Grid>
+                                    <TextBlock
+                                        x:Uid="OptimizeAnchorsHeader"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                    <Button
+                                        x:Uid="OptimizeResetAnchors"
+                                        HorizontalAlignment="Right"
+                                        Command="{x:Bind ViewModel.ResetAnchorsCommand}"
+                                        IsEnabled="{x:Bind ViewModel.CanEdit, Mode=OneWay}" />
+                                </Grid>
+                                <ItemsRepeater ItemsSource="{x:Bind ViewModel.Anchors}">
+                                    <ItemsRepeater.Layout>
+                                        <UniformGridLayout
+                                            ItemsStretch="Fill"
+                                            MinColumnSpacing="8"
+                                            MinItemWidth="140"
+                                            MinRowSpacing="8" />
+                                    </ItemsRepeater.Layout>
+                                    <ItemsRepeater.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:AnchorItem">
+                                            <Grid ColumnSpacing="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <NumberBox
+                                                    x:Uid="OptimizeAnchorBox"
+                                                    Maximum="1300"
+                                                    Minimum="600"
+                                                    SmallChange="5"
+                                                    SpinButtonPlacementMode="Hidden"
+                                                    Value="{x:Bind VoltageMv, Mode=TwoWay}" />
+                                                <Button
+                                                    x:Uid="OptimizeRemoveAnchor"
+                                                    Grid.Column="1"
+                                                    Click="{x:Bind Remove}"
+                                                    Padding="8,6">
+                                                    <FontIcon FontSize="12" Glyph="&#xE711;" />
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsRepeater.ItemTemplate>
+                                </ItemsRepeater>
+                                <Grid ColumnSpacing="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <NumberBox
+                                        x:Uid="OptimizeNewAnchor"
+                                        IsEnabled="{x:Bind ViewModel.CanEdit, Mode=OneWay}"
+                                        Maximum="1300"
+                                        Minimum="600"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Hidden"
+                                        Value="{x:Bind ViewModel.NewAnchorMv, Mode=TwoWay}" />
+                                    <Button
+                                        x:Uid="OptimizeAddAnchor"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Bottom"
+                                        Command="{x:Bind ViewModel.AddAnchorCommand}"
+                                        IsEnabled="{x:Bind ViewModel.CanEdit, Mode=OneWay}" />
+                                </Grid>
+                            </StackPanel>
+
+                            <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind ViewModel.EstimateText, Mode=OneWay}" />
+
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button
+                                    x:Uid="OptimizeStart"
+                                    Command="{x:Bind ViewModel.StartCommand}"
+                                    Style="{StaticResource AccentButtonStyle}" />
+                                <Button x:Uid="OptimizeCancel" Command="{x:Bind ViewModel.CancelCommand}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <InfoBar
+                        x:Uid="OptimizeNotElevatedBar"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.NotElevated, Mode=OneWay}"
+                        Severity="Warning" />
+                    <InfoBar
+                        x:Uid="OptimizeNoGpuBar"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.NoGpu, Mode=OneWay}"
+                        Severity="Error" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Progress column -->
+            <Grid Grid.Column="1" RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="150" />
+                </Grid.RowDefinitions>
+
+                <!-- StackPanel instead of a grid row: a closed InfoBar must not leave row spacing above the progress card. -->
+                <StackPanel Spacing="12">
+                    <InfoBar
+                        Visibility="{x:Bind ViewModel.IsResultOpen, Mode=OneWay}"
+                        IsClosable="True"
+                        IsOpen="{x:Bind ViewModel.IsResultOpen, Mode=TwoWay}"
+                        Message="{x:Bind ViewModel.ResultMessage, Mode=OneWay}"
+                        Severity="{x:Bind ViewModel.ResultSeverity, Mode=OneWay}"
+                        Title="{x:Bind ViewModel.ResultTitle, Mode=OneWay}">
+                        <InfoBar.ActionButton>
+                            <Button
+                                x:Uid="OptimizeViewResults"
+                                Click="ViewResults_Click"
+                                Visibility="{x:Bind ViewModel.HasResultAction, Mode=OneWay}" />
+                        </InfoBar.ActionButton>
+                    </InfoBar>
+                    <Border Style="{StaticResource CardBorderStyle}">
+                        <StackPanel Spacing="8">
+                            <Grid>
+                                <TextBlock
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.PhaseText, Mode=OneWay}" />
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource SecondaryTextStyle}"
+                                    Text="{x:Bind ViewModel.EtaText, Mode=OneWay}" />
+                            </Grid>
+                            <ProgressBar
+                                IsIndeterminate="{x:Bind ViewModel.IsIndeterminate, Mode=OneWay}"
+                                Maximum="100"
+                                Value="{x:Bind ViewModel.Progress, Mode=OneWay}" />
+                            <Grid>
+                                <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind ViewModel.TestText, Mode=OneWay}" />
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource SecondaryTextStyle}"
+                                    Text="{x:Bind ViewModel.TestProgressText, Mode=OneWay}" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <Border
+                    Grid.Row="1"
+                    MinHeight="200"
+                    Style="{StaticResource CardBorderStyle}">
+                    <controls:CurveChart
+                        Series="{x:Bind ViewModel.Series, Mode=OneWay}"
+                        XMax="{x:Bind ViewModel.ChartXMax, Mode=OneWay}"
+                        XMin="{x:Bind ViewModel.ChartXMin, Mode=OneWay}" />
+                </Border>
+
+                <ItemsRepeater Grid.Row="2" ItemsSource="{x:Bind ViewModel.Tiles.All}">
+                    <ItemsRepeater.Layout>
+                        <UniformGridLayout
+                            ItemsStretch="Fill"
+                            MinColumnSpacing="8"
+                            MinItemWidth="104"
+                            MinRowSpacing="8" />
+                    </ItemsRepeater.Layout>
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate x:DataType="vm:TileViewModel">
+                            <Border
+                                Padding="12,8"
+                                Style="{StaticResource CardBorderStyle}"
+                                ToolTipService.ToolTip="{x:Bind ToolTip, Mode=OneWay}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind Label}" />
+                                    <Viewbox HorizontalAlignment="Left" StretchDirection="DownOnly">
+                                        <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{x:Bind Value, Mode=OneWay}" />
+                                    </Viewbox>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+
+                <Border
+                    Grid.Row="3"
+                    Padding="0"
+                    Style="{StaticResource CardBorderStyle}">
+                    <ScrollViewer x:Name="LogScroller" Padding="12,8" VerticalScrollBarVisibility="Auto">
+                        <ItemsRepeater ItemsSource="{x:Bind ViewModel.Log}">
+                            <ItemsRepeater.Layout>
+                                <StackLayout Spacing="4" />
+                            </ItemsRepeater.Layout>
+                            <ItemsRepeater.ItemTemplate>
+                                <DataTemplate x:DataType="vm:LogEntry">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="72" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind Time}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="{x:Bind Text}"
+                                            TextWrapping="Wrap" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsRepeater.ItemTemplate>
+                        </ItemsRepeater>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

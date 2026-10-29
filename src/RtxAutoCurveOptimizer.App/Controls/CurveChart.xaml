@@ -1,0 +1,47 @@
+<UserControl
+    x:Class="RtxAutoCurveOptimizer.App.Controls.CurveChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="StockBrush" Color="{ThemeResource TextFillColorSecondary}" />
+        <SolidColorBrush x:Key="CurrentBrush" Color="{ThemeResource TextFillColorPrimary}" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="{ThemeResource SystemFillColorSuccess}" />
+        <SolidColorBrush x:Key="CriticalBrush" Color="{ThemeResource SystemFillColorCritical}" />
+        <SolidColorBrush x:Key="CautionBrush" Color="{ThemeResource SystemFillColorCaution}" />
+        <SolidColorBrush x:Key="GridBrush" Color="{ThemeResource DividerStrokeColorDefault}" />
+        <SolidColorBrush x:Key="AxisBrush" Color="{ThemeResource TextFillColorSecondary}" />
+        <SolidColorBrush x:Key="TextBrush" Color="{ThemeResource TextFillColorPrimary}" />
+        <SolidColorBrush x:Key="TipBackgroundBrush" Color="{ThemeResource ControlSolidFillColorDefault}" />
+        <SolidColorBrush x:Key="TipBorderBrush" Color="{ThemeResource SurfaceStrokeColorFlyout}" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Carries the theme-dependent accent brush, which has no Color resource of its own. -->
+        <Rectangle
+            x:Name="AccentProbe"
+            Width="0"
+            Height="0"
+            Fill="{ThemeResource SystemFillColorAttentionBrush}" />
+
+        <StackPanel
+            x:Name="LegendPanel"
+            Margin="60,0,0,4"
+            Orientation="Horizontal"
+            Spacing="16" />
+
+        <Canvas
+            x:Name="Plot"
+            Grid.Row="1"
+            Background="Transparent"
+            PointerExited="Plot_PointerExited"
+            PointerPressed="Plot_PointerPressed"
+            PointerMoved="Plot_PointerMoved"
+            SizeChanged="Plot_SizeChanged" />
+    </Grid>
+</UserControl>

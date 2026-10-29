@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- Shell -->
+  <data name="AppTitle" xml:space="preserve"><value>RTX Auto Curve Optimizer</value></data>
+  <data name="AppTitleBar.Title" xml:space="preserve"><value>RTX Auto Curve Optimizer</value></data>
+  <data name="NavOverview.Content" xml:space="preserve"><value>Overview</value></data>
+  <data name="NavOptimize.Content" xml:space="preserve"><value>Optimize</value></data>
+  <data name="NavResults.Content" xml:space="preserve"><value>Results</value></data>
+  <data name="NavSettings.Content" xml:space="preserve"><value>Settings</value></data>
+
+  <!-- Chart -->
+  <data name="Chart_VoltageAxis" xml:space="preserve"><value>Voltage (mV)</value></data>
+  <data name="Chart_FrequencyAxis" xml:space="preserve"><value>Frequency (MHz)</value></data>
+  <data name="Chart_Stock" xml:space="preserve"><value>Stock</value></data>
+  <data name="Chart_Current" xml:space="preserve"><value>Current</value></data>
+  <data name="Chart_Now" xml:space="preserve"><value>Operating point</value></data>
+  <data name="Chart_Measured" xml:space="preserve"><value>Measured stable</value></data>
+  <data name="Chart_MaxStable" xml:space="preserve"><value>Max stable</value></data>
+  <data name="Chart_Passed" xml:space="preserve"><value>Passed</value></data>
+  <data name="Chart_Failed" xml:space="preserve"><value>Failed</value></data>
+  <data name="Chart_Testing" xml:space="preserve"><value>Testing</value></data>
+  <data name="Chart_Cap" xml:space="preserve"><value>Cap point</value></data>
+
+  <!-- Formatting -->
+  <data name="Duration_Seconds" xml:space="preserve"><value>{0} s</value></data>
+  <data name="Duration_MinSec" xml:space="preserve"><value>{0} min {1} s</value></data>
+  <data name="Duration_HourMin" xml:space="preserve"><value>{0} h {1} min</value></data>
+  <data name="Limit_None" xml:space="preserve"><value>None</value></data>
+  <data name="Limit_GpuIdle" xml:space="preserve"><value>Idle</value></data>
+  <data name="Limit_ApplicationClocks" xml:space="preserve"><value>Application clocks</value></data>
+  <data name="Limit_SwPowerCap" xml:space="preserve"><value>Power limit</value></data>
+  <data name="Limit_HwSlowdown" xml:space="preserve"><value>HW slowdown</value></data>
+  <data name="Limit_SyncBoost" xml:space="preserve"><value>Sync boost</value></data>
+  <data name="Limit_SwThermalSlowdown" xml:space="preserve"><value>Thermal limit</value></data>
+  <data name="Limit_HwThermalSlowdown" xml:space="preserve"><value>HW thermal slowdown</value></data>
+  <data name="Limit_HwPowerBrakeSlowdown" xml:space="preserve"><value>Power brake</value></data>
+  <data name="Limit_DisplayClock" xml:space="preserve"><value>Display clock</value></data>
+  <data name="Limit_Other" xml:space="preserve"><value>Other ({0})</value></data>
+
+  <!-- Telemetry tiles -->
+  <data name="Tile_Clock" xml:space="preserve"><value>Graphics clock</value></data>
+  <data name="Tile_Voltage" xml:space="preserve"><value>Voltage</value></data>
+  <data name="Tile_Power" xml:space="preserve"><value>Power</value></data>
+  <data name="Tile_Temperature" xml:space="preserve"><value>Temperature</value></data>
+  <data name="Tile_Utilization" xml:space="preserve"><value>Utilization</value></data>
+  <data name="Tile_Limits" xml:space="preserve"><value>Clock limits</value></data>
+  <data name="Tile_MemoryDetail" xml:space="preserve"><value>Memory {0}</value></data>
+  <data name="Tile_PowerLimitDetail" xml:space="preserve"><value>Limit {0}</value></data>
+
+  <!-- Overview -->
+  <data name="Overview_NoGpu" xml:space="preserve"><value>No GPU available</value></data>
+  <data name="Overview_Driver" xml:space="preserve"><value>Driver {0}</value></data>
+  <data name="OverviewTitle.Text" xml:space="preserve"><value>Overview</value></data>
+  <data name="OverviewChartTitle.Text" xml:space="preserve"><value>Voltage/frequency curve</value></data>
+  <data name="OverviewErrorBar.Title" xml:space="preserve"><value>The GPU could not be opened</value></data>
+  <data name="OverviewAfterburnerBar.Title" xml:space="preserve"><value>MSI Afterburner is running</value></data>
+  <data name="OverviewAfterburnerBar.Message" xml:space="preserve"><value>Afterburner re-applies its own profile and rewrites its profile files when it exits. Close it before optimizing or saving a profile.</value></data>
+  <data name="OverviewReadOnlyBar.Title" xml:space="preserve"><value>Read-only mode</value></data>
+  <data name="OverviewReadOnlyBar.Message" xml:space="preserve"><value>This process is not elevated. Monitoring works, but the curve cannot be changed. Start the app as administrator to optimize.</value></data>
+  <data name="OverviewDemoBar.Title" xml:space="preserve"><value>Demo mode</value></data>
+  <data name="OverviewDemoBar.Message" xml:space="preserve"><value>A simulated GPU is used. The real hardware is not touched.</value></data>
+
+  <!-- Optimize -->
+  <data name="OptimizeTitle.Text" xml:space="preserve"><value>Optimize</value></data>
+  <data name="OptimizePresetHeader.Text" xml:space="preserve"><value>Search effort</value></data>
+  <data name="Preset_Quick" xml:space="preserve"><value>Quick</value></data>
+  <data name="Preset_Standard" xml:space="preserve"><value>Standard</value></data>
+  <data name="Preset_Thorough" xml:space="preserve"><value>Thorough</value></data>
+  <data name="Preset_Estimate" xml:space="preserve"><value>About {0}</value></data>
+  <data name="OptimizeSafetyMargin.Header" xml:space="preserve"><value>Safety margin (MHz)</value></data>
+  <data name="OptimizeAnchorsHeader.Text" xml:space="preserve"><value>Anchor voltages (mV)</value></data>
+  <data name="OptimizeResetAnchors.Content" xml:space="preserve"><value>Reset</value></data>
+  <data name="OptimizeRemoveAnchor.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Remove anchor</value></data>
+  <data name="OptimizeAnchorBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Anchor voltage (mV)</value></data>
+  <data name="OptimizeNewAnchor.Header" xml:space="preserve"><value>New anchor (mV)</value></data>
+  <data name="OptimizeAddAnchor.Content" xml:space="preserve"><value>Add</value></data>
+  <data name="OptimizeStart.Content" xml:space="preserve"><value>Start</value></data>
+  <data name="OptimizeCancel.Content" xml:space="preserve"><value>Cancel</value></data>
+  <data name="OptimizeViewResults.Content" xml:space="preserve"><value>View results</value></data>
+  <data name="OptimizeNotElevatedBar.Title" xml:space="preserve"><value>Start is disabled</value></data>
+  <data name="OptimizeNotElevatedBar.Message" xml:space="preserve"><value>Changing the V/F curve requires administrator rights. Restart the app as administrator to run an optimization.</value></data>
+  <data name="OptimizeNoGpuBar.Title" xml:space="preserve"><value>No GPU available</value></data>
+  <data name="OptimizeNoGpuBar.Message" xml:space="preserve"><value>No NVIDIA GPU could be opened, so there is nothing to optimize.</value></data>
+  <data name="Optimize_Estimate" xml:space="preserve"><value>Estimated duration {0} for {1} anchors</value></data>
+  <data name="Optimize_TestProgress" xml:space="preserve"><value>{0} of {1}</value></data>
+  <data name="Optimize_EtaRemaining" xml:space="preserve"><value>About {0} remaining</value></data>
+  <data name="Optimize_TestAt" xml:space="preserve"><value>{0}: {1} at {2}</value></data>
+
+  <data name="Phase_Idle" xml:space="preserve"><value>Idle</value></data>
+  <data name="Phase_Cancelling" xml:space="preserve"><value>Cancelling and restoring the original offsets…</value></data>
+  <data name="Phase_Preparing" xml:space="preserve"><value>Preparing</value></data>
+  <data name="Phase_Calibrating" xml:space="preserve"><value>Calibrating the stress test</value></data>
+  <data name="Phase_WarmingUp" xml:space="preserve"><value>Warming up the GPU</value></data>
+  <data name="Phase_MeasuringReferences" xml:space="preserve"><value>Measuring reference performance</value></data>
+  <data name="Phase_SearchingAnchors" xml:space="preserve"><value>Searching stable clocks</value></data>
+  <data name="Phase_BuildingProposals" xml:space="preserve"><value>Building proposals</value></data>
+  <data name="Phase_Validating" xml:space="preserve"><value>Validating the curve</value></data>
+  <data name="Phase_Restoring" xml:space="preserve"><value>Restoring the original offsets</value></data>
+  <data name="Phase_Finished" xml:space="preserve"><value>Finished</value></data>
+
+  <data name="Kind_Warmup" xml:space="preserve"><value>Warm-up</value></data>
+  <data name="Kind_ReferenceStock" xml:space="preserve"><value>Stock reference</value></data>
+  <data name="Kind_ReferenceCurrent" xml:space="preserve"><value>Current reference</value></data>
+  <data name="Kind_Search" xml:space="preserve"><value>Search</value></data>
+  <data name="Kind_ColdConfirm" xml:space="preserve"><value>Cold confirm</value></data>
+  <data name="Kind_Confirm" xml:space="preserve"><value>Confirmation</value></data>
+  <data name="Kind_Validation" xml:space="preserve"><value>Validation</value></data>
+
+  <data name="Outcome_Passed" xml:space="preserve"><value>passed</value></data>
+  <data name="Outcome_ComputeError" xml:space="preserve"><value>computation error</value></data>
+  <data name="Outcome_DeviceLost" xml:space="preserve"><value>driver reset</value></data>
+  <data name="Outcome_Cancelled" xml:space="preserve"><value>cancelled</value></data>
+  <data name="Outcome_Crashed" xml:space="preserve"><value>crashed</value></data>
+  <data name="Outcome_Invalid" xml:space="preserve"><value>operating point not reached</value></data>
+
+  <data name="Log_Started" xml:space="preserve"><value>Optimization started with {0} anchors.</value></data>
+  <data name="Log_WatchdogRestart" xml:space="preserve"><value>Restarted automatically by the watchdog after a crash or hang ({0} of {1}); the run continues.</value></data>
+  <data name="Log_Error" xml:space="preserve"><value>Error: {0}</value></data>
+  <data name="Log_Finished" xml:space="preserve"><value>{0} after {1}.</value></data>
+  <data name="Log_Phase" xml:space="preserve"><value>{0}</value></data>
+  <data name="Log_Anchor" xml:space="preserve"><value>Anchor {0}: max stable {1}, recommended {2}, performance {3}.</value></data>
+  <data name="Log_TestAt" xml:space="preserve"><value>#{0} {1}, {2} at {3}: {4}</value></data>
+  <data name="Log_Test" xml:space="preserve"><value>#{0} {1}: {2}</value></data>
+
+  <data name="Status_Completed" xml:space="preserve"><value>Completed</value></data>
+  <data name="Status_Cancelled" xml:space="preserve"><value>Cancelled</value></data>
+  <data name="Status_Failed" xml:space="preserve"><value>Failed</value></data>
+
+  <data name="Result_CompletedTitle" xml:space="preserve"><value>Optimization completed</value></data>
+  <data name="Result_Completed" xml:space="preserve"><value>Recommended: cap at {0} / {1}, expected {2} performance at {3}. Review the proposals on the Results page.</value></data>
+  <data name="Result_CompletedNoProposal" xml:space="preserve"><value>No proposal could be built.</value></data>
+  <data name="Result_CancelledTitle" xml:space="preserve"><value>Optimization cancelled</value></data>
+  <data name="Result_Cancelled" xml:space="preserve"><value>The original offsets were restored.</value></data>
+  <data name="Result_FailedTitle" xml:space="preserve"><value>Optimization failed</value></data>
+  <data name="Result_ErrorTitle" xml:space="preserve"><value>Unexpected error</value></data>
+  <data name="Result_NotRestored" xml:space="preserve"><value>The original offsets could not be restored. Use "Restore original" on the Results page or reset the curve in Afterburner.</value></data>
+
+  <data name="Failure_None" xml:space="preserve"><value>Unknown failure.</value></data>
+  <data name="Failure_GpuAccessDenied" xml:space="preserve"><value>The driver refused the change: administrator rights are required.</value></data>
+  <data name="Failure_GpuControlError" xml:space="preserve"><value>The driver rejected a curve change.</value></data>
+  <data name="Failure_StockUnstable" xml:space="preserve"><value>The GPU was unstable even at the stock curve.</value></data>
+  <data name="Failure_NoUsableAnchors" xml:space="preserve"><value>No anchor produced a usable result.</value></data>
+  <data name="Failure_SessionMismatch" xml:space="preserve"><value>The session was recorded on a different GPU.</value></data>
+  <data name="Failure_GpuUnresponsive" xml:space="preserve"><value>The GPU stopped responding after a driver reset (no telemetry or the curve was not applied). Restart the PC, then start the app again to resume.</value></data>
+
+  <data name="Warning_DeviceLost" xml:space="preserve"><value>The GPU driver was reset; waiting for it to recover.</value></data>
+  <data name="Warning_IntensityReduced" xml:space="preserve"><value>The target clock was not reached; the load is reduced.</value></data>
+  <data name="Warning_AnchorLimited" xml:space="preserve"><value>Anchor {0} is limited by power or temperature.</value></data>
+  <data name="Warning_AnchorSkipped" xml:space="preserve"><value>Anchor {0} was skipped.</value></data>
+  <data name="Warning_AnchorUnconfirmed" xml:space="preserve"><value>Anchor {0} could not be confirmed and was skipped.</value></data>
+  <data name="Warning_CurrentCurveUnstable" xml:space="preserve"><value>The current curve failed the reference test.</value></data>
+  <data name="Warning_MarginIncreased" xml:space="preserve"><value>Validation failed; the safety margin was raised by {0} MHz.</value></data>
+  <data name="Warning_ValidationFailed" xml:space="preserve"><value>The proposal could not be validated.</value></data>
+  <data name="Warning_RestoreFailed" xml:space="preserve"><value>Restoring the original offsets failed: {0}</value></data>
+  <data name="Warning_ResumedFromSession" xml:space="preserve"><value>Resuming session {0}.</value></data>
+  <data name="Warning_CoolingDown" xml:space="preserve"><value>Cold confirm at {0}: the GPU cools down, then a short burst runs the full curve clock.</value></data>
+  <data name="Warning_TelemetryLost" xml:space="preserve"><value>Test #{0} got no telemetry; reconnecting to the GPU and repeating it.</value></data>
+  <data name="Warning_WorkerRestarted" xml:space="preserve"><value>The test process stopped responding or ended unexpectedly; it was restarted and the run continues (restart {0}).</value></data>
+
+  <data name="Dialog_AfterburnerTitle" xml:space="preserve"><value>Close MSI Afterburner first</value></data>
+  <data name="Dialog_AfterburnerMessage" xml:space="preserve"><value>MSI Afterburner is running. It re-applies its own profile and would overwrite the test curves. Close it, then choose "Check again".</value></data>
+  <data name="Dialog_AfterburnerRetry" xml:space="preserve"><value>Check again</value></data>
+  <data name="Dialog_AfterburnerIgnore" xml:space="preserve"><value>Start anyway</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Dialog_CloseTitle" xml:space="preserve"><value>An operation is still running</value></data>
+  <data name="Dialog_CloseMessage" xml:space="preserve"><value>Closing now cancels the running test and restores the original offsets first. This can take a few seconds.</value></data>
+  <data name="Dialog_CloseConfirm" xml:space="preserve"><value>Cancel and close</value></data>
+  <data name="Dialog_ClosingTitle" xml:space="preserve"><value>Closing</value></data>
+  <data name="Dialog_ClosingMessage" xml:space="preserve"><value>Restoring the original offsets. The window closes when this is done.</value></data>
+
+  <!-- Results -->
+  <data name="ResultsTitle.Text" xml:space="preserve"><value>Results</value></data>
+  <data name="ResultsEmptyTitle.Text" xml:space="preserve"><value>No results yet</value></data>
+  <data name="ResultsEmptyText.Text" xml:space="preserve"><value>Run an optimization to get proposals for a tuned voltage/frequency curve.</value></data>
+  <data name="ResultsGoOptimize.Content" xml:space="preserve"><value>Go to Optimize</value></data>
+  <data name="ResultsNotElevatedBar.Title" xml:space="preserve"><value>Read-only mode</value></data>
+  <data name="ResultsNotElevatedBar.Message" xml:space="preserve"><value>Applying, validating and restoring need administrator rights. Saving to Afterburner and exporting still work.</value></data>
+  <data name="ResultsProposalsHeader.Text" xml:space="preserve"><value>Proposals</value></data>
+  <data name="ResultsRecommendedBadge.Text" xml:space="preserve"><value>Recommended</value></data>
+  <data name="ResultsCardPower.Text" xml:space="preserve"><value>Expected power</value></data>
+  <data name="ResultsCardPerformance.Text" xml:space="preserve"><value>Performance vs. stock</value></data>
+  <data name="ResultsApply.Content" xml:space="preserve"><value>Apply to GPU</value></data>
+  <data name="ResultsShift.Header" xml:space="preserve"><value>Shift the curve</value></data>
+  <data name="ResultsShiftHint.Text" xml:space="preserve"><value>Shift: + raises (each anchor at most up to the clock measured under load), − lowers. Clock limit: lower cuts the curve off at the top, higher moves the cap to a higher voltage (up to the highest measured clock); also by clicking into the chart. Apply, Save and Export use the result.</value></data>
+  <data name="ResultsClockLimit.Header" xml:space="preserve"><value>Clock limit</value></data>
+  <data name="ResultsValidate.Content" xml:space="preserve"><value>Validate</value></data>
+  <data name="ResultsSave.Content" xml:space="preserve"><value>Save to Afterburner profile slot…</value></data>
+  <data name="ResultsExport.Content" xml:space="preserve"><value>Export</value></data>
+  <data name="ResultsExportJson.Text" xml:space="preserve"><value>JSON</value></data>
+  <data name="ResultsExportCsv.Text" xml:space="preserve"><value>CSV</value></data>
+  <data name="ResultsRestore.Content" xml:space="preserve"><value>Restore original</value></data>
+  <data name="ResultsValidatingTitle.Text" xml:space="preserve"><value>Validating under variable load</value></data>
+  <data name="ResultsCancelValidation.Content" xml:space="preserve"><value>Cancel</value></data>
+  <data name="ResultsChartTitle.Text" xml:space="preserve"><value>Selected proposal</value></data>
+  <data name="ResultsAnchorsHeader.Text" xml:space="preserve"><value>Anchors</value></data>
+  <data name="ResultsColVoltage.Text" xml:space="preserve"><value>Voltage</value></data>
+  <data name="ResultsColStock.Text" xml:space="preserve"><value>Stock</value></data>
+  <data name="ResultsColMaxStable.Text" xml:space="preserve"><value>Max stable</value></data>
+  <data name="ResultsColRecommended.Text" xml:space="preserve"><value>Recommended</value></data>
+  <data name="ResultsColPower.Text" xml:space="preserve"><value>Power</value></data>
+  <data name="ResultsColPerformance.Text" xml:space="preserve"><value>Performance</value></data>
+  <data name="ResultsColPerfPerWatt.Text" xml:space="preserve"><value>Perf/W</value></data>
+  <data name="ResultsColNote.Text" xml:space="preserve"><value>Note</value></data>
+
+  <data name="Proposal_Efficient" xml:space="preserve"><value>Efficient</value></data>
+  <data name="Proposal_MaxEfficiency" xml:space="preserve"><value>Max efficiency</value></data>
+  <data name="Proposal_Performance" xml:space="preserve"><value>Performance</value></data>
+  <data name="Proposal_Uniform" xml:space="preserve"><value>Uniform offset</value></data>
+  <data name="Proposal_Custom" xml:space="preserve"><value>Current GPU curve</value></data>
+
+  <data name="Results_Summary" xml:space="preserve"><value>{0} after {1}, {2} tests.</value></data>
+  <data name="Results_Reference" xml:space="preserve"><value>Stock reference: {0} at {1}.</value></data>
+  <data name="Results_Selection" xml:space="preserve"><value>Selected curve: cap at {0}, {1} · about {2} ({3}) · performance about {4} of stock</value></data>
+  <data name="Results_PowerVsStock" xml:space="preserve"><value>{0} vs. stock</value></data>
+  <data name="Results_CapText" xml:space="preserve"><value>Cap at {0}, {1}</value></data>
+  <data name="Results_MarginText" xml:space="preserve"><value>+{0} MHz margin</value></data>
+  <data name="Results_Validated" xml:space="preserve"><value>Validated</value></data>
+  <data name="Results_NotValidated" xml:space="preserve"><value>Not validated</value></data>
+  <data name="Results_NoteCap" xml:space="preserve"><value>Cap point</value></data>
+  <data name="Results_NoteLimited" xml:space="preserve"><value>Limited</value></data>
+  <data name="Results_DoneTitle" xml:space="preserve"><value>Done</value></data>
+  <data name="Results_AppliedMessage" xml:space="preserve"><value>The "{0}" curve is now active on the GPU. It is not saved: a reboot or driver reset removes it.</value></data>
+  <data name="Results_RestoredMessage" xml:space="preserve"><value>The offsets from before the optimization are active again.</value></data>
+  <data name="Results_ApplyFailedTitle" xml:space="preserve"><value>The curve could not be written</value></data>
+  <data name="Results_ValidationPassedTitle" xml:space="preserve"><value>Validation passed</value></data>
+  <data name="Results_ValidationPassed" xml:space="preserve"><value>The curve is stable under variable load (extra margin {0} MHz).</value></data>
+  <data name="Results_ValidationFailedTitle" xml:space="preserve"><value>Validation failed</value></data>
+  <data name="Results_ValidationFailed" xml:space="preserve"><value>The curve was not stable even after raising the margin to {0} MHz. Use a lower cap or a larger safety margin.</value></data>
+  <data name="Results_ValidationCancelledTitle" xml:space="preserve"><value>Validation cancelled</value></data>
+  <data name="Results_ValidationCancelled" xml:space="preserve"><value>The previous offsets were restored.</value></data>
+  <data name="Results_ValidationErrorTitle" xml:space="preserve"><value>Validation failed with an error</value></data>
+  <data name="Results_ValidatingProgress" xml:space="preserve"><value>{0} of {1}</value></data>
+  <data name="Results_SavedTitle" xml:space="preserve"><value>Profile saved</value></data>
+  <data name="Results_SavedMessage" xml:space="preserve"><value>Written to profile slot {0} of the Afterburner profile file.
+Backup of the previous file: {1}</value></data>
+  <data name="Results_SaveFailedTitle" xml:space="preserve"><value>The profile could not be saved</value></data>
+  <data name="Results_ExportedTitle" xml:space="preserve"><value>Exported</value></data>
+  <data name="Results_ExportedMessage" xml:space="preserve"><value>Saved to {0}</value></data>
+  <data name="Results_ExportFailedTitle" xml:space="preserve"><value>The export failed</value></data>
+
+  <!-- Save to Afterburner dialog -->
+  <data name="SaveProfileDialog.Title" xml:space="preserve"><value>Save to Afterburner profile</value></data>
+  <data name="SaveProfileDialog.PrimaryButtonText" xml:space="preserve"><value>Save</value></data>
+  <data name="SaveProfileDialog.CloseButtonText" xml:space="preserve"><value>Cancel</value></data>
+  <data name="SaveProfileIntro.Text" xml:space="preserve"><value>The curve is written into the chosen profile slot of the Afterburner profile file of this GPU. A backup copy of the file is created first.</value></data>
+  <data name="SaveProfileRunningBar.Title" xml:space="preserve"><value>MSI Afterburner is running</value></data>
+  <data name="SaveProfileRunningBar.Message" xml:space="preserve"><value>Afterburner rewrites its profile files when it exits, which would discard the change. Close it first.</value></data>
+  <data name="SaveProfileCheckAgain.Content" xml:space="preserve"><value>Check again</value></data>
+  <data name="SaveProfileMissingBar.Title" xml:space="preserve"><value>No profile file found</value></data>
+  <data name="SaveProfileMissingBar.Message" xml:space="preserve"><value>Afterburner has not created a profile file for this GPU yet. Start Afterburner once, then close it.</value></data>
+  <data name="SaveProfileSlot.Header" xml:space="preserve"><value>Profile slot</value></data>
+  <data name="SaveProfile_SlotEmpty" xml:space="preserve"><value>Slot {0} (empty)</value></data>
+  <data name="SaveProfile_SlotUsed" xml:space="preserve"><value>Slot {0} (in use, will be overwritten)</value></data>
+  <data name="SaveProfile_RunningError" xml:space="preserve"><value>MSI Afterburner is running. Close it before saving a profile.</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle.Text" xml:space="preserve"><value>Settings</value></data>
+  <data name="SettingsDemoHeader.Text" xml:space="preserve"><value>Demo mode</value></data>
+  <data name="SettingsDemoDescription.Text" xml:space="preserve"><value>Uses a simulated GPU and stress test instead of the real hardware, so the whole workflow can be tried without any load. Saved profiles go to a temporary copy.</value></data>
+  <data name="SettingsDemoSwitch.OnContent" xml:space="preserve"><value>On</value></data>
+  <data name="SettingsDemoSwitch.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Demo mode</value></data>
+  <data name="SettingsDemoSwitch.OffContent" xml:space="preserve"><value>Off</value></data>
+  <data name="SettingsBusyBar.Title" xml:space="preserve"><value>An operation is running</value></data>
+  <data name="SettingsBusyBar.Message" xml:space="preserve"><value>Wait for it to finish before switching modes.</value></data>
+  <data name="SettingsAboutHeader.Text" xml:space="preserve"><value>About</value></data>
+  <data name="Settings_Version" xml:space="preserve"><value>Version {0}</value></data>
+  <data name="Settings_SessionsFolder" xml:space="preserve"><value>Sessions: {0}</value></data>
+  <data name="Settings_ProfilesFolder" xml:space="preserve"><value>Afterburner profiles: {0}</value></data>
+
+  <!-- Crash recovery -->
+  <data name="Recovery_Title" xml:space="preserve"><value>Unfinished optimization found</value></data>
+  <data name="Recovery_Message" xml:space="preserve"><value>An optimization started on {0} did not finish; the app or the PC may have crashed. It completed {1} tests and {2} anchors. The original offsets can be restored now, and the run can continue where it stopped.</value></data>
+  <data name="Recovery_Resume" xml:space="preserve"><value>Restore and resume</value></data>
+  <data name="Recovery_RestoreOnly" xml:space="preserve"><value>Restore only</value></data>
+  <data name="Recovery_Ignore" xml:space="preserve"><value>Ignore</value></data>
+  <data name="Recovery_NeedsAdminTitle" xml:space="preserve"><value>Unfinished optimization found</value></data>
+  <data name="Recovery_NeedsAdmin" xml:space="preserve"><value>An optimization started on {0} did not finish. Start the app as administrator to restore the original offsets.</value></data>
+  <data name="Recovery_ErrorTitle" xml:space="preserve"><value>Startup check failed</value></data>
+  <data name="Recovery_RestoredTitle" xml:space="preserve"><value>Original offsets restored</value></data>
+  <data name="Recovery_Restored" xml:space="preserve"><value>The offsets from before the interrupted optimization are active again.</value></data>
+  <data name="Recovery_RestoredCrash" xml:space="preserve"><value>The offsets from before the interrupted optimization are active again. The test that was running is recorded as a crash.</value></data>
+  <data name="Recovery_MismatchTitle" xml:space="preserve"><value>Different GPU</value></data>
+  <data name="Recovery_Mismatch" xml:space="preserve"><value>The session was recorded on a different GPU, so nothing was restored.</value></data>
+  <data name="Recovery_FailedTitle" xml:space="preserve"><value>Restoring failed</value></data>
+</root>
