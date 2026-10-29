@@ -190,4 +190,25 @@ public sealed class ProvenClockTests
             Assert.True(Stock.Points[a.PointIndex].StockKhz + moved.Offsets.OffsetsKhz[a.PointIndex] <= ProposalBuilder.ProvenKhz(a));
         Assert.True(ProposalBuilder.Estimate(Stock, anchors, moved.Offsets).CapVoltageUv <= anchors.Max(a => a.VoltageUv));
     }
+
+    [Fact]
+    public void Uniform_CapReachesTheBestAnchorEvenWhenHigherAnchorsProvedLess()
+    {
+        // Run 20261028-230508: 950 mV proved the most; 1000 and 1050 mV proved less but sit on the flat part, which the GPU never runs.
+        var session = SessionRecompute.Recompute(Session(
+            Measured(0, 850, 2630, 2630, 0.93, 190), Measured(1, 875, 2733, 2733, 0.96, 205),
+            Measured(2, 900, 2910, 2910, 0.99, 225), Measured(3, 925, 2925, 2925, 1.0, 240),
+            Measured(4, 950, 2977, 2977, 1.01, 255), Measured(5, 1000, 2932, 2932, 1.0, 285),
+            Measured(6, 1050, 2932, 2932, 1.0, 310)));
+        const int stockBoostMhz = 2768;
+        var anchors = session.Anchors;
+
+        var maxCap = ProposalBuilder.UniformMaxCapMhz(Stock, anchors, stockBoostMhz, 0);
+        var moved = ProposalBuilder.Uniform(Stock, anchors, stockBoostMhz, capMhz: maxCap);
+
+        Assert.Equal(2977, maxCap);
+        var capVoltage = ProposalBuilder.Estimate(Stock, anchors, moved.Offsets).CapVoltageUv;
+        foreach (var a in anchors.Where(a => a.VoltageUv <= capVoltage))
+            Assert.True(Stock.Points[a.PointIndex].StockKhz + moved.Offsets.OffsetsKhz[a.PointIndex] <= ProposalBuilder.ProvenKhz(a));
+    }
 }

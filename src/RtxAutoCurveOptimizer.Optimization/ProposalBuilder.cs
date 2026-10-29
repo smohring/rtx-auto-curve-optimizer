@@ -102,15 +102,20 @@ public static class ProposalBuilder
     }
 
     /// <summary>
-    /// Highest cap of <see cref="Uniform"/> with the same offset: the flat part may not pass any anchor's proven clock,
-    /// and the cap may not sit above the highest anchor (untested voltages).
+    /// Highest cap of <see cref="Uniform"/> with the same offset: walking up, the curve may not pass a proven clock before
+    /// it reaches the cap; anchors above the cap sit on the flat part and are never run. Never above the highest anchor.
     /// </summary>
     public static int UniformMaxCapMhz(StockCurve stock, IReadOnlyList<AnchorResult> anchors, double stockBoostMhz, int shiftMhz)
     {
         var offsetKhz = UniformOffsetKhz(anchors, stockBoostMhz) + shiftMhz * 1000;
-        var top = anchors.MaxBy(a => a.VoltageUv)!;
-        return anchors.Where(a => a.StockKhz + offsetKhz > ProvenKhz(a)).Select(ProvenKhz)
-            .Append(Math.Min(top.StockKhz + offsetKhz, ProvenKhz(top))).Min() / 1000;
+        var best = 0;
+        foreach (var a in anchors.OrderBy(a => a.VoltageUv))
+        {
+            best = Math.Max(best, Math.Min(a.StockKhz + offsetKhz, ProvenKhz(a)));
+            if (a.StockKhz + offsetKhz > ProvenKhz(a)) break;
+        }
+
+        return best / 1000;
     }
 
     /// <summary>The offset of <see cref="Uniform"/>: the smallest recommended one among anchors below the stock boost clock.</summary>

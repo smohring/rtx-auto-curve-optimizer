@@ -41,6 +41,29 @@ public sealed partial class MainWindow : Window
         Closed += (_, _) => session.Dispose();
         AppNavigation.Requested += Navigate;
         ((FrameworkElement)Content).Loaded += OnContentLoaded;
+        foreach (var item in Navigation.MenuItems.Concat(Navigation.FooterMenuItems).OfType<NavigationViewItem>())
+            item.SizeChanged += (s, _) => FitSelectionIndicator((NavigationViewItem)s);
+    }
+
+    /// <summary>Stretches a top tab's selection bar (16 px in the WinUI template) to the width of its label.</summary>
+    private static void FitSelectionIndicator(NavigationViewItem item)
+    {
+        var label = Descendants(item).OfType<ContentPresenter>().FirstOrDefault(c => c.Name == "ContentPresenter");
+        var bar = Descendants(item).OfType<Microsoft.UI.Xaml.Shapes.Rectangle>().FirstOrDefault(r => r.Name == "SelectionIndicator");
+        if (label is null || bar is null || bar.Parent is not Grid { Parent: UIElement root } grid) return;
+        grid.HorizontalAlignment = HorizontalAlignment.Left;
+        grid.Margin = new Thickness(label.TransformToVisual(root).TransformPoint(default).X, 0, 0, grid.Margin.Bottom);
+        bar.Width = label.ActualWidth;
+    }
+
+    private static IEnumerable<DependencyObject> Descendants(DependencyObject parent)
+    {
+        for (var i = 0; i < Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChildrenCount(parent); i++)
+        {
+            var child = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChild(parent, i);
+            yield return child;
+            foreach (var d in Descendants(child)) yield return d;
+        }
     }
 
     private void ApplyInitialSize()

@@ -18,7 +18,8 @@ public sealed partial class ResultsPage : Page
 
     protected override void OnNavigatedTo(NavigationEventArgs e) => _ = ViewModel.RefreshCurrentAsync();
 
-    private void Chart_PlotClicked(double voltageMv, double clockMhz) => ViewModel.ClockLimitMhz = clockMhz;
+    private void Chart_PlotClicked(double voltageMv, double clockMhz) => 
+        ViewModel.ClockLimitMhz = Math.Clamp(clockMhz, ViewModel.MinClockMhz, ViewModel.PeakClockMhz);
 
     private void GoOptimize_Click(object sender, RoutedEventArgs e) => AppNavigation.Go("optimize");
 }
